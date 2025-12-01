@@ -1,3 +1,3 @@
-# @jafps/plugin-template
+# @jafps/config
 
-Template repository for Fastify Plugin.
+Functions for reading configuration.

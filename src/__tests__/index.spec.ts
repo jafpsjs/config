@@ -1,16 +1,67 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import fastify from "fastify";
-import plugin from "../index.js";
+import { Type } from "typebox";
+import { EnvConfigReader, StringEnvProperty } from "#env";
+import { readConfig } from "../index.js";
 
-describe("@jafps/plugin-template", () => {
-  describe("hello", () => {
-    it("should return value", async () => {
-      const value = "world";
-      const app = await fastify();
-      await app.register(plugin, { value });
-      const result = app.hello();
-      assert.equal(result, value);
+const env = {
+  A: "1",
+  B: "c",
+  c: "true"
+};
+
+describe("readConfig", () => {
+  it("should merge values from multiple ConfigReader", async () => {
+    const cfg = await readConfig({
+      readers: [
+        new EnvConfigReader({ a: new StringEnvProperty("A") }, env),
+        new EnvConfigReader({ b: new StringEnvProperty("B") }, env)
+      ],
+      schema: Type.Object({
+        a: Type.String(),
+        b: Type.String()
+      })
     });
+    assert.equal(cfg.a, "1");
+    assert.equal(cfg.b, "c");
+  });
+
+  it("should set default value", async () => {
+    const cfg = await readConfig({
+      readers: [
+        new EnvConfigReader({ a: new StringEnvProperty("A") }, env)
+      ],
+      schema: Type.Object({
+        a: Type.String(),
+        b: Type.Options(Type.String(), { default: "c" })
+      })
+    });
+    assert.equal(cfg.a, "1");
+    assert.equal(cfg.b, "c");
+  });
+
+  it("should throw on invalid configuration", async () => {
+    assert.rejects(async () => {
+      await readConfig({
+        readers: [
+          new EnvConfigReader({ a: new StringEnvProperty("A") }, env)
+        ],
+        schema: Type.Object({
+          a: Type.String(),
+          b: Type.String()
+        })
+      });
+    });
+  });
+  it("should clean extras values", async () => {
+    const cfg = await readConfig({
+      readers: [
+        new EnvConfigReader({ a: new StringEnvProperty("A") }, env),
+        new EnvConfigReader({ b: new StringEnvProperty("B") }, env)
+      ],
+      schema: Type.Object({ a: Type.String() })
+    });
+    assert.equal(cfg.a, "1");
+    assert.equal((cfg as any).b, undefined);
   });
 });
