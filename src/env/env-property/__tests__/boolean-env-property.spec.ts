@@ -32,4 +32,22 @@ describe("BooleanEnvProperty", () => {
     const result = envProperty.parse("falSe");
     assert.equal(result, false);
   });
+
+  it("should return true not ignore case", async () => {
+    const envProperty = new BooleanEnvProperty("", { ignoreCase: false });
+    const result = envProperty.parse("true");
+    assert.equal(result, true);
+  });
+
+  it("should return false not ignore case", async () => {
+    const envProperty = new BooleanEnvProperty("", { ignoreCase: false });
+    const result = envProperty.parse("false");
+    assert.equal(result, false);
+  });
+
+  it("should return undefined not ignore case", async () => {
+    const envProperty = new BooleanEnvProperty("", { ignoreCase: false });
+    const result = envProperty.parse("TRUE");
+    assert.equal(result, undefined);
+  });
 });

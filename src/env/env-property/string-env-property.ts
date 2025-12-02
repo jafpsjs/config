@@ -1,7 +1,9 @@
 import { EnvProperty } from "./env-property.js";
 
+export type StringEnvPropertyOptions = {};
+
 export class StringEnvProperty extends EnvProperty<string> {
-  public constructor(env: string) {
+  public constructor(env: string, _opts?: StringEnvPropertyOptions) {
     super(env);
   }
 

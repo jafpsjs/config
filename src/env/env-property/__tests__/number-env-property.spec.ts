@@ -20,4 +20,10 @@ describe("NumberEnvProperty", () => {
     const result = envProperty.parse("asw");
     assert.equal(result, undefined);
   });
+
+  it("should return integer on int", async () => {
+    const envProperty = new NumberEnvProperty("", { type: "int" });
+    const result = envProperty.parse("1.1");
+    assert.equal(result, 1);
+  });
 });

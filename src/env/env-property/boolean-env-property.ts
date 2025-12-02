@@ -1,12 +1,21 @@
 import { EnvProperty } from "./env-property.js";
 
+export type BooleanEnvPropertyOptions = {
+  ignoreCase?: boolean;
+};
+
 export class BooleanEnvProperty extends EnvProperty<boolean> {
-  public constructor(env: string) {
+  private readonly ignoreCase: boolean;
+
+  public constructor(env: string, opts?: BooleanEnvPropertyOptions) {
     super(env);
+    const { ignoreCase = true } = opts ?? {};
+    this.ignoreCase = ignoreCase;
   }
 
   public override parse(input: string): boolean | undefined {
-    switch (input.toLowerCase()) {
+    const value = this.ignoreCase ? input.toLowerCase() : input;
+    switch (value) {
       case "false":
         return false;
       case "true":
