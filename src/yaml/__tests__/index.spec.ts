@@ -20,4 +20,10 @@ describe("JsonConfigReader", () => {
     const result = (await reader.read()) as any;
     assert.deepEqual(result, {});
   });
+
+  it("should return empty object on non-object", async () => {
+    const reader = new YamlConfigReader("invalid.yaml");
+    const result = (await reader.read()) as any;
+    assert.deepEqual(result, {});
+  });
 });
