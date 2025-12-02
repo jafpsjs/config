@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/jafpsjs/config/compare/v1.2.0...v1.2.1) (2025-12-02)
+
+
+### Bug Fixes
+
+* Remove undefined from EnvProperty ([5f4e815](https://github.com/jafpsjs/config/commit/5f4e815f9db5bf2c936f5dcfc6911f842a674144))
+
 ## [1.2.0](https://github.com/jafpsjs/config/compare/v1.1.0...v1.2.0) (2025-12-02)
 
 
