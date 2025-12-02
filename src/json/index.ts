@@ -1,16 +1,8 @@
-import { readFile } from "node:fs/promises";
-import { ConfigReader } from "../config-reader.js";
+import { FileConfigReader } from "#base";
+import type { UnknownRecord } from "type-fest";
 
-export class JsonConfigReader extends ConfigReader<unknown> {
-  private readonly filePath: string;
-
-  public constructor(filePath: string) {
-    super();
-    this.filePath = filePath;
-  }
-
-  public async read(): Promise<unknown> {
-    const data = await readFile(this.filePath, { encoding: "utf-8" });
-    return JSON.parse(data);
+export class JsonConfigReader extends FileConfigReader {
+  public parse(content: string): Promise<UnknownRecord> {
+    return JSON.parse(content);
   }
 }

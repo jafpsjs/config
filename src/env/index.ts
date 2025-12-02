@@ -1,14 +1,15 @@
 import { env } from "process";
-import { ConfigReader } from "../config-reader.js";
+import { ConfigReader } from "#base";
 import { readEnv } from "./read-env.js";
+import type { FastifyBaseLogger } from "fastify";
 import type { EnvObject, EnvObjectType } from "./type.js";
 
 export class EnvConfigReader<T extends EnvObject> extends ConfigReader<EnvObjectType<T>> {
   private readonly opts: T;
   private readonly values: Record<string, string | undefined>;
 
-  public constructor(opts: T, values: Record<string, string | undefined> = env) {
-    super();
+  public constructor(opts: T, values: Record<string, string | undefined> = env, logger?: FastifyBaseLogger) {
+    super(logger);
     this.opts = opts;
     this.values = values;
   }

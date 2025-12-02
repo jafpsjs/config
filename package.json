@@ -20,13 +20,28 @@
   },
   "homepage": "https://github.com/jafpsjs/config#readme",
   "imports": {
+    "#base": {
+      "import": "./dist/base/index.js"
+    },
     "#env": {
       "import": "./dist/env/index.js"
+    },
+    "#json": {
+      "import": "./dist/json/index.js"
+    },
+    "#util": {
+      "import": "./dist/util/index.js"
+    },
+    "#yaml": {
+      "import": "./dist/yaml/index.js"
     }
   },
   "exports": {
     ".": {
       "import": "./dist/index.js"
+    },
+    "./base": {
+      "import": "./dist/base/index.js"
     },
     "./env": {
       "import": "./dist/env/index.js"
@@ -50,6 +65,7 @@
     "@joshuaavalon/eslint-config-typescript": "^10.0.0",
     "@types/node": "^24.9.1",
     "eslint": "^9.38.0",
+    "fastify": "^5.6.2",
     "globals": "^16.4.0",
     "rimraf": "^6.0.1",
     "typescript": "^5.9.3",
@@ -58,6 +74,7 @@
   "dependencies": {
     "mergician": "^2.0.2",
     "ts-extras": "0.16.0",
+    "type-fest": "^5.2.0",
     "typebox": "^1.0.58",
     "yaml": "^2.8.2"
   }

@@ -1,17 +1,9 @@
-import { readFile } from "node:fs/promises";
 import { parse } from "yaml";
-import { ConfigReader } from "../config-reader.js";
+import { FileConfigReader } from "#base";
+import type { UnknownRecord } from "type-fest";
 
-export class YamlConfigReader extends ConfigReader<unknown> {
-  private readonly filePath: string;
-
-  public constructor(filePath: string) {
-    super();
-    this.filePath = filePath;
-  }
-
-  public async read(): Promise<unknown> {
-    const data = await readFile(this.filePath, { encoding: "utf-8" });
-    return parse(data, { prettyErrors: true, strict: true, stringKeys: true, uniqueKeys: true });
+export class YamlConfigReader extends FileConfigReader {
+  public parse(content: string): Promise<UnknownRecord> {
+    return parse(content, { prettyErrors: true, strict: true, stringKeys: true, uniqueKeys: true });
   }
 }
