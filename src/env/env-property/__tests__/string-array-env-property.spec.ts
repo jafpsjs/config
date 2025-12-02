@@ -19,7 +19,7 @@ describe("StringCommaListEnvProperty", () => {
 
   it("should return string array different separator", async () => {
     const envProperty = new StringArrayEnvProperty("", { separator: "|" });
-    const result = envProperty.parse("1,2");
+    const result = envProperty.parse("1|2");
     assert.equal(result?.length, 2);
     assert.equal(result[0], "1");
     assert.equal(result[1], "2");
