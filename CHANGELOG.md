@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/jafpsjs/config/compare/v1.0.0...v1.1.0) (2025-12-02)
+
+
+### Features
+
+* Add logging instead of throw on fail to read file config ([8331456](https://github.com/jafpsjs/config/commit/83314563ef406dda90ded045a4c75db93902209b))
+
 ## 1.0.0 (2025-12-01)
 
 
