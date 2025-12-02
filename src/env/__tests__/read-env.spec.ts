@@ -26,5 +26,6 @@ describe("readEnv", () => {
   it("should return undefined if missing from env", async () => {
     const result = readEnv({ a: new StringEnvProperty("D") }, env);
     assert.equal(result.a, undefined);
+    assert.equal("a" in result, false);
   });
 });

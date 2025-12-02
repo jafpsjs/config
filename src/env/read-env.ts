@@ -15,7 +15,11 @@ export function readEnv<T extends EnvObject>(opts: T, values: Record<string, str
   return objectEntries(opts).reduce((pre, cur) => {
     const [key, value] = cur;
     if (value instanceof EnvProperty) {
-      return { ...pre, [key]: readEnvProperty(value, values) };
+      const envVal = readEnvProperty(value, values);
+      if (typeof envVal !== "undefined") {
+        return { ...pre, [key]: readEnvProperty(value, values) };
+      }
+      return pre;
     }
     return { ...pre, [key]: readEnv(value, values) };
   }, {} as EnvObjectType<T>);
