@@ -1,6 +1,6 @@
 {
   "name": "@jafps/config",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Functions for reading configuration.",
   "type": "module",
   "scripts": {
