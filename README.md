@@ -1,5 +1,7 @@
 # @jafps/config
 
+[![NPM Version](https://img.shields.io/npm/v/%40jafps%2Fconfig)](https://www.npmjs.com/package/@jafps/config)
+
 Functions for reading configuration.
 
 ## Usage
