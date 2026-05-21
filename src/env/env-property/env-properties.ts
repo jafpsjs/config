@@ -1,9 +1,11 @@
 import { BooleanEnvProperty } from "./boolean-env-property.js";
 import { NumberEnvProperty } from "./number-env-property.js";
+import { ObjectEnvProperty } from "./object-env-property.js";
 import { StringArrayEnvProperty } from "./string-array-env-property.js";
 import { StringEnvProperty } from "./string-env-property.js";
 import type { BooleanEnvPropertyOptions } from "./boolean-env-property.js";
 import type { NumberEnvPropertyOptions } from "./number-env-property.js";
+import type { ObjectEnvPropertyOptions } from "./object-env-property.js";
 import type { StringArrayEnvPropertyOptions } from "./string-array-env-property.js";
 import type { StringEnvPropertyOptions } from "./string-env-property.js";
 
@@ -20,6 +22,9 @@ export const envProps = {
   },
   num(env: string, opts?: NumberEnvPropertyOptions): NumberEnvProperty {
     return new NumberEnvProperty(env, opts);
+  },
+  obj<T extends ObjectEnvPropertyOptions>(opts: T): ObjectEnvProperty<T> {
+    return new ObjectEnvProperty(opts);
   },
   str(env: string, opts?: StringEnvPropertyOptions): StringEnvProperty {
     return new StringEnvProperty(env, opts);

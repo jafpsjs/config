@@ -13,7 +13,7 @@ export class NumberEnvProperty extends EnvProperty<number> {
     this.type = type;
   }
 
-  public override parse(input: string): number | undefined {
+  protected override parse(input: string): number | undefined {
     let output: number = Number.NaN;
     switch (this.type) {
       case "float": {

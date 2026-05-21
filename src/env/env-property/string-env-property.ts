@@ -7,7 +7,7 @@ export class StringEnvProperty extends EnvProperty<string> {
     super(env);
   }
 
-  public override parse(input: string): string | undefined {
+  protected override parse(input: string): string | undefined {
     return input;
   }
 }

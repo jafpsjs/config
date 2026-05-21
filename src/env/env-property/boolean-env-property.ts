@@ -13,7 +13,7 @@ export class BooleanEnvProperty extends EnvProperty<boolean> {
     this.ignoreCase = ignoreCase;
   }
 
-  public override parse(input: string): boolean | undefined {
+  protected override parse(input: string): boolean | undefined {
     const value = this.ignoreCase ? input.toLowerCase() : input;
     switch (value) {
       case "false":

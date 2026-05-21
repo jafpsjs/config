@@ -4,8 +4,8 @@ import { StringEnvProperty } from "../string-env-property.js";
 
 describe("StringCommaListEnvProperty", () => {
   it("should return string", async () => {
-    const envProperty = new StringEnvProperty("");
-    const result = envProperty.parse("1,2");
+    const envProperty = new StringEnvProperty("a");
+    const result = envProperty.parseEnv({ a: "1,2" });
     assert.equal(result, "1,2");
   });
 });

@@ -4,22 +4,22 @@ import { StringArrayEnvProperty } from "../string-array-env-property.js";
 
 describe("StringCommaListEnvProperty", () => {
   it("should return string array", async () => {
-    const envProperty = new StringArrayEnvProperty("");
-    const result = envProperty.parse("1,2");
+    const envProperty = new StringArrayEnvProperty("a");
+    const result = envProperty.parseEnv({ a: "1,2" });
     assert.equal(result?.length, 2);
     assert.equal(result[0], "1");
     assert.equal(result[1], "2");
   });
 
   it("should return empty string", async () => {
-    const envProperty = new StringArrayEnvProperty("");
-    const result = envProperty.parse("1");
+    const envProperty = new StringArrayEnvProperty("a");
+    const result = envProperty.parseEnv({ a: "1" });
     assert.equal(result?.length, 1);
   });
 
   it("should return string array different separator", async () => {
-    const envProperty = new StringArrayEnvProperty("", { separator: "|" });
-    const result = envProperty.parse("1|2");
+    const envProperty = new StringArrayEnvProperty("a", { separator: "|" });
+    const result = envProperty.parseEnv({ a: "1|2" });
     assert.equal(result?.length, 2);
     assert.equal(result[0], "1");
     assert.equal(result[1], "2");

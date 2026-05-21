@@ -13,7 +13,7 @@ export class StringArrayEnvProperty extends EnvProperty<string[]> {
     this.separator = separator;
   }
 
-  public override parse(input: string): string[] | undefined {
+  protected override parse(input: string): string[] | undefined {
     return input.split(this.separator);
   }
 }
