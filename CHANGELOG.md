@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/jafpsjs/config/compare/v1.3.0...v1.3.1) (2026-05-21)
+
+
+### Bug Fixes
+
+* Export ObjectEnvProperty ([df67d47](https://github.com/jafpsjs/config/commit/df67d47014ea531ce02eb760295344a135d1dc6f))
+
 ## [1.3.0](https://github.com/jafpsjs/config/compare/v1.2.3...v1.3.0) (2026-05-21)
 
 
