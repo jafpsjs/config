@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/jafpsjs/config/compare/v1.2.3...v1.3.0) (2026-05-21)
+
+
+### Features
+
+* Add ObjectEnvProperty ([9db2b14](https://github.com/jafpsjs/config/commit/9db2b14d45d0e2e220b913e07135ac412be079e0))
+
 ## [1.2.3](https://github.com/jafpsjs/config/compare/v1.2.2...v1.2.3) (2026-05-13)
 
 
